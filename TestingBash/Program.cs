@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+
+/*Using Task Scheduler of the Windows operating system, we can automatically execute a bash job
+ * that creates a log into a specific folder on the hard drive. 
+ */
 
 namespace TestingBash
 {
