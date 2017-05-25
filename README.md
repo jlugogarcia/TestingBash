@@ -1,2 +1,2 @@
 # TestingBash
-A sample console application for executing a bash job using Task Scheduler of the Windows OS.
+A sample console application for executing a bash job using Windows OS Task Scheduler.
