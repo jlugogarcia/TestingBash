@@ -23,20 +23,29 @@ namespace TestingBash
                 System.IO.Directory.CreateDirectory(logFolder);
             }
 
-            string pathFile = Path.GetFullPath(logFolder) + "\\" + DateTime.Now.ToString("MM_dd_yyyy_HH_mm") + "_Log.txt";
-
+            string pathFile = Path.GetFullPath(logFolder) + "\\Log.txt";
+            dynamic dateAndTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
 
             try
             {
                 if ((!File.Exists(pathFile)))
                 {
-                    File.Create(pathFile);
+                    var myFile = File.Create(pathFile);
+                    myFile.Close();
                 }
+
+                //If you want to test the exception log message, uncomment the following line
+                //throw new Exception("Testing error on log file.");
+
+                System.IO.StreamWriter log = new System.IO.StreamWriter (pathFile, true);
+
+                log.WriteLine(dateAndTime + " - " + "Record was successful.");
+                log.Close();                
+
             }
             catch (Exception ex)
             {
-                string logPath = "C:\\TestLog.txt";
-                File.AppendAllText(logPath, Environment.NewLine + ex.Message);
+                File.AppendAllText(pathFile, Environment.NewLine + dateAndTime + " - " + ex.Message);
             }
         }
     }
