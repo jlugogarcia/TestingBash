@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-/*Using Task Scheduler of the Windows operating system, we can automatically execute a bash job
+/*Using Task Scheduler of the Windows operating system, you can automatically execute a bash job
  * that creates a log into a specific folder on the hard drive. 
  */
 
