@@ -26,6 +26,8 @@ namespace TestingBash
             string pathFile = Path.GetFullPath(logFolder) + "\\Log.txt";
             dynamic dateAndTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
 
+            System.IO.StreamWriter log = new System.IO.StreamWriter(pathFile, true);
+
             try
             {
                 if ((!File.Exists(pathFile)))
@@ -35,18 +37,20 @@ namespace TestingBash
                 }
 
                 //If you want to test the exception log message, uncomment the following line
-                //throw new Exception("Testing error on log file.");
+                //throw new Exception("Testing error on log file.");               
 
-                System.IO.StreamWriter log = new System.IO.StreamWriter (pathFile, true);
-
-                log.WriteLine(dateAndTime + " - " + "Record was successful.");
-                log.Close();                
+                log.WriteLine(dateAndTime + " - " + "Record was successful.");                             
 
             }
             catch (Exception ex)
             {
-                File.AppendAllText(pathFile, Environment.NewLine + dateAndTime + " - " + ex.Message);
+                log.WriteLine(pathFile, Environment.NewLine + dateAndTime + " - " + ex.Message);
             }
+            finally
+            {
+                log.Close();
+            }
+            
         }
     }
 }
